@@ -114,7 +114,40 @@ body.rc-only .no-print-rc{display:none}
 .inc2{font-size:11px!important;gap:0 8px!important;line-height:1.2!important}#info .spots{display:none}.c2 .cmpw+.stamp{margin:10px auto 0!important}.c3 h2.mt{margin-top:4px!important}.disc{margin-top:2px!important;padding-top:3px!important}
 .tc{font-size:11.5px!important;line-height:1.25!important}.hrng{font-size:16px!important;font-weight:800!important;color:var(--ink)!important;top:110px!important}
 #ordstrip{grid-template-columns:190px auto 1fr!important;gap:16px!important}.tco{font-size:9.6px!important;line-height:1.22!important;margin:0!important;max-height:118px;overflow:hidden}
-</style></head><body>
+</style><style id="responsive">
+html,body{max-width:100%}
+@media (min-width:761px){html,body{overflow-x:hidden}#rc{padding:18px 0}}
+@media print{#rcx,.calcw{zoom:1!important}}
+@media (max-width:760px){
+html,body{overflow-x:hidden}
+#rcx,.calcw{zoom:1!important;width:100%!important;max-width:100%!important}
+#rc{padding:0}
+.toolbar{flex-wrap:wrap;padding:8px 10px;position:static}.toolbar>span{display:none}.toolbar button{flex:1 1 auto}
+#info{height:auto!important;overflow:visible!important;padding:12px 14px!important}
+.top,.g3,#ordstrip{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:14px!important;height:auto!important}
+.c1{margin-left:0!important}.c1,.c2,.c3{min-width:0;width:100%}
+.ttl,.lineup{text-align:center}.lu{align-items:center}
+h1{white-space:normal!important;font-size:26px!important}
+.br,.age .br{grid-template-columns:96px minmax(0,1fr) 56px!important}
+.pr2{grid-template-columns:auto minmax(0,1fr) auto!important}
+.hubw{height:auto!important;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 4px}.hubw .hub,.hubw>svg{display:none}
+.hl{position:static!important;transform:none!important;width:30%!important}.hrng{position:static!important;transform:none!important;width:100%;text-align:center}
+.hero{flex-wrap:wrap}.hero b{font-size:48px}
+.stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.tr{grid-template-columns:34px minmax(0,1fr) auto!important}.tp span{min-width:0!important}
+.steps{flex-wrap:wrap;justify-content:center;gap:8px}.sp{flex:1 1 28%}
+#ordstrip{padding:14px!important}#ordstrip>*,.tc,.tco,.tc>div{height:auto!important;max-height:none!important;overflow:visible!important;-webkit-line-clamp:unset!important;display:block}#ordstrip .ordbox{display:flex}.oh{transform:none}
+.ordbox .eq{flex-wrap:wrap;gap:10px;justify-content:center}
+.calcw{padding:14px!important}.sh{flex-wrap:wrap}
+.spotsel,.bar,.drow,.disc{flex-wrap:wrap!important}
+.lr-box .spots,.tierin{grid-template-columns:1fr!important}
+.our input,.disc input,.drow input,.bar input{max-width:100%}
+#dur-out,#cmp{display:block;overflow-x:auto}
+.inc2 li{white-space:normal}#rcx :is(.br,.pr2,.pl,.pr,.pies,.sp,.tc,.inc,.inc2,.mm,.drow,.disc,.ctry,.tws,.act,.sub,.hk2,.audit,.stats span) b{font-size:15px!important}.mm div{white-space:normal}
+#rcx :is(small,span:not(.op2):not(:is(.tp,.hero,.eq,.otot,.offer,.oh) span),td,th,li,label,p),#rcx div:not(.stamp):not(.oh):not(.hn),.calcw :is(small,span,td,th,label,input,select,button,div){font-size:15px!important}
+}
+</style>
+</head><body>
 <div class="toolbar no-print"><a href="spectre_nation_views.html">← Dashboard</a><span style="flex:1"></span><button id="reset">Reset</button><button class="pri" id="savefull">Save PDF</button><button class="gold" id="saverc">Save PDF — Rate Card Only</button></div>
 <div id="rc"><div id="rcx"><div id="info"><div class="flagbg"></div>
 
@@ -677,4 +710,9 @@ const durDates=()=>{const a=$("dur-from").value,b=$("dur-to").value;if(a&&b&&a<=
 $("savefull").onclick=()=>window.print();$("saverc").onclick=()=>rcPDF();
 $("reset").onclick=()=>{if(confirm("Reset all rate card edits?")){U={};localStorage.removeItem(LS);apply();quick("tm")}};
 {const q=new URLSearchParams(location.search).get("q");quick(q||"tm")}
-</script></body></html>
+</script><script id="responsive-js">(function(){var W=1600,els=function(){return[document.getElementById("rcx"),document.querySelector(".calcw")].filter(Boolean)};
+function fit(){var w=document.documentElement.clientWidth,z=w>760?Math.min(1,(w-(w>=W?0:16))/W):1;els().forEach(function(e){e.style.zoom=z==1?"":z})}
+window.addEventListener("resize",fit);window.addEventListener("orientationchange",fit);fit();
+if(typeof rcPDF=="function"){var o=rcPDF;window.rcPDF=async function(r){var s=els().map(function(e){var v=e.style.zoom;e.style.zoom="";return v});try{return await o(r)}finally{els().forEach(function(e,i){e.style.zoom=s[i]})}}}
+window.addEventListener("beforeprint",function(){els().forEach(function(e){e.style.zoom=""})});window.addEventListener("afterprint",fit)})();</script>
+</body></html>
