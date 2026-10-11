@@ -60,7 +60,7 @@ svg text{fill:var(--mu);font-size:11px}#ctip{border-color:var(--gold)!important}
 <main>
 <div class="bar"><label>From <input type="date" id="from"></label><label>To <input type="date" id="to"></label><button id="all">All dates</button>
 <label><input type="checkbox" id="hidewe"> Hide weekends</label><span style="flex:1"></span>
-<button data-imp="rumble">Import Rumble CSV</button><button data-imp="twitch">Import Twitch CSV</button><button data-imp="x" title="Feeds X Likes and New follows only">Import X CSV (likes/follows)</button><button class="pri" onclick="var h='spectre_nation_rate_card.html';if(location.hostname=='htmlpreview.github.io')h='?'+new URL(h,document.baseURI).href;window.open(h,'_blank')">Rate Card</button><button id="mmbtn" type="button">Mobile</button><button id="reset">Reset to defaults</button><input type="file" id="file" accept=".csv,text/csv" hidden></div>
+<button data-imp="rumble">Import Rumble CSV</button><button data-imp="twitch">Import Twitch CSV</button><button data-imp="x" title="Feeds X Likes and New follows only">Import X CSV (likes/follows)</button><button class="pri" onclick="var h='spectre_nation_rate_card.html';if(location.hostname=='htmlpreview.github.io')h='?'+new window.URL(h,document.baseURI).href;window.open(h,'_blank')">Rate Card</button><button id="mmbtn" type="button">Mobile</button><button id="reset">Reset to defaults</button><input type="file" id="file" accept=".csv,text/csv" hidden></div>
 <div class="note" id="msg"></div>
 <div class="hero" id="hero"></div>
 <div class="cards" id="cards"></div>
